@@ -1,0 +1,29 @@
+[project]
+name = "server"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "HamidBasri", email = "dev.hamidbasri@gmail.com"},
+]
+dependencies = [
+    "python-dotenv>=1.0.1",
+    "fastapi>=0.109.0",
+    "uvicorn>=0.27.0",
+]
+requires-python = "==3.12.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
+
+[tool.pdm.dev-dependencies]
+style = [
+    "black>=23.12.1",
+]
+
+[tool.pdm.scripts]
+_.env_file = ".env"
+dev = "uvicorn main:app --reload --app-dir ./src/"
+export = "pdm export --no-hashes --prod -o requirements.txt"
